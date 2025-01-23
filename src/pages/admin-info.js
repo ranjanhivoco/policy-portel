@@ -9,7 +9,7 @@ const AdminInfo = () => {
       <Header />
 
       <div className="flex justify-between px-14 pt-14 pb-10">
-        <h2 className="text-[1.75rem] text-2xl font-semibold text-black">Admin Dashboard</h2>
+        <h2 className="text-2xl text-[1.75rem]  font-semibold text-black">Admin Dashboard</h2>
 
         <div className="flex items-center gap-2 bg-[#F6F6F6] rounded-lg p-3 ">
           <Search size={28} />

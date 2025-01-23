@@ -3,9 +3,11 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className="py-9 px-14 flex justify-between items-center 
+    <div
+      className="py-9 px-14 flex justify-between items-center 
     shadow-[0px_1.12px_13.47px_0px__#0000001A]
-    ">
+    "
+    >
       <Image
         className=""
         src={"/images/hivoco-studios.png"}
@@ -31,7 +33,9 @@ const Header = () => {
             </h3>
 
             <span
-              className="
+            // style={{color:"#656565"}}
+            className="
+          text-[#656565]
             text-sm
             font-normal
             "
@@ -39,9 +43,8 @@ const Header = () => {
               ananya.garg@hivoco.com
             </span>
           </div>
-          <ChevronDown size={16}  />
+          <ChevronDown size={16} />
         </div>
-
       </div>
     </div>
   );
