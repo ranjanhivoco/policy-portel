@@ -33,7 +33,7 @@ const Header = () => {
             </h3>
 
             <span
-            // style={{color:"#656565"}}
+            style={{color:"#656565"}}
             className="
           text-[#656565]
             text-sm
