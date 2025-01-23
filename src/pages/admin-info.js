@@ -31,7 +31,7 @@ const AdminInfo = () => {
         </div>
       </div>
 
-      <div className="mx-14 rounded-t-xl overflow-hidden ">
+      <div className="mx-14 rounded-t-xl overflow-hidden">
         <AdminTable />
       </div>
     </div>
