@@ -26,7 +26,7 @@ const Home = () => {
       />
 
       <section className="font-normal flex flex-col gap-8">
-        <div className=" text-black flex flex-col gap-3">
+        <div className=" text-black flex flex-col items-center gap-3">
           <h2 className="text-2xl tracking-wide">LOGIN</h2>
 
           <h3 className="text-base font-normal trackin">
