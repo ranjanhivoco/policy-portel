@@ -106,19 +106,19 @@ const AdminTable = () => {
             className="text-[#2A2A2A] text-xl  font-semibold"
           >
             <td
-              style={{ padding: "24px 16px", textAlign: "left" }}
+              style={{ padding: "20px 16px", textAlign: "left" }}
               className="px-4 py-6 text-left"
             >
               {employee.id}
             </td>
             <td
-              style={{ padding: "24px 16px", textAlign: "left" }}
+              style={{ padding: "20px 16px", textAlign: "left" }}
               className="px-4 py-6 text-left"
             >
               {employee.name}
             </td>
             <td
-              style={{ padding: "24px 16px", textAlign: "left" }}
+              style={{ padding: "20px 16px", textAlign: "left" }}
               className="px-4 py-6 text-left"
             >
               {employee.policy}
@@ -126,7 +126,7 @@ const AdminTable = () => {
 
             <td
               style={{
-                padding: "24px 16px",
+                padding: "20px 16px",
                 textAlign: "left",
                 fontWeight: "700",
               }}
