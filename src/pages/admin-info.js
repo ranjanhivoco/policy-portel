@@ -9,19 +9,28 @@ const AdminInfo = () => {
       <Header />
 
       <div className="flex justify-between px-14 pt-14 pb-10">
-        <h2 className="text-2xl text-black">Admin Dashboard</h2>
+        <h2 className="text-[1.75rem] text-2xl font-semibold text-black">Admin Dashboard</h2>
 
-        <div className="flex gap-1">
+        <div className="flex items-center gap-2 bg-[#F6F6F6] rounded-lg p-3 ">
           <Search size={28} />
 
           <input
             className="
+            bg-transparent
             outline-none
             text-black
             border-b-2
           border-black
             w-80
           placeholder:text-[#656565]
+
+                    [&:-webkit-autofill]:bg-transparent
+          [&:-webkit-autofill:hover]:bg-transparent
+          [&:-webkit-autofill:focus]:bg-transparent
+          [&:-webkit-autofill:active]:bg-transparent
+          [&:-webkit-autofill]:[transition-delay:9999s]
+          [&:-webkit-autofill]:[-webkit-text-fill-color:inherit]
+
           "
             type="text"
             id="name"
