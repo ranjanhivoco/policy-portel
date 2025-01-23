@@ -8,7 +8,7 @@ const AdminInfo = () => {
     <div>
       <Header />
 
-      <div className="flex justify-between px-14 pt-14 pb-10">
+      <div className="flex justify-between items-center  px-14 pt-14 pb-10">
         <h2 className="text-2xl text-[1.75rem]  font-semibold text-black">Admin Dashboard</h2>
 
         <div className="flex items-center gap-2 bg-[#F6F6F6] rounded-lg p-3 ">
