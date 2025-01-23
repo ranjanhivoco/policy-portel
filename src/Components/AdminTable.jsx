@@ -62,25 +62,25 @@ const AdminTable = () => {
            "
         >
           <th
-            style={{ paddingTop: "24px", paddingBottom: "24px",textAlign:"left" }}
+            style={{ padding:"24px 16px",textAlign:"left" }}
             className="py-6 px-4 text-left"
           >
             SR NO.
           </th>
           <th
-            style={{ paddingTop: "24px", paddingBottom: "24px",textAlign:"left" }}
+            style={{ padding:"24px 16px",textAlign:"left" }}
             className="py-6 px-4 text-left"
           >
             EMPLOYEE NAME
           </th>
           <th
-            style={{ paddingTop: "24px", paddingBottom: "24px",textAlign:"left" }}
+            style={{ padding:"24px 16px",textAlign:"left" }}
             className="py-6 px-4 text-left"
           >
             POLICY STATUS
           </th>
           <th
-            style={{ paddingTop: "24px", paddingBottom: "24px",textAlign:"left" }}
+            style={{ padding:"24px 16px",textAlign:"left" }}
             className="py-6 px-4 text-left"
           >
             ACTIONS
@@ -96,26 +96,26 @@ const AdminTable = () => {
             className="text-[#2A2A2A] text-xl  font-semibold"
           >
             <td
-              style={{ paddingTop: "24px", paddingBottom: "24px",textAlign:"left" }}
+              style={{ padding:"24px 16px",textAlign:"left" }}
               className="px-4 py-6 text-left"
             >
               {employee.id}
             </td>
             <td
-              style={{ paddingTop: "24px", paddingBottom: "24px",textAlign:"left" }}
+              style={{padding:"24px 16px",textAlign:"left" }}
               className="px-4 py-6 text-left"
             >
               {employee.name}
             </td>
             <td
-              style={{ paddingTop: "24px", paddingBottom: "24px",textAlign:"left" }}
+              style={{padding:"24px 16px",textAlign:"left" }}
               className="px-4 py-6 text-left"
             >
               {employee.policy}
             </td>
 
             <td
-              style={{ paddingTop: "24px", paddingBottom: "24px",textAlign:"left",fontWeight:"700" }}
+              style={{ padding:"24px 16px",textAlign:"left",fontWeight:"700" }}
               className="px-4 py-6 font-bold text-left"
             >
               <button
