@@ -54,9 +54,8 @@ const AdminTable = () => {
     <table className="w-full table-auto ">
       <thead >
         <tr
-        style={{lineHeight:"24px"}}
+        style={{lineHeight:"24px",backgroundColor:"#2A2A2A"}}
           className="
-            bg-[#2A2A2A]
             text-white
             text-xl
             font-semibold 
@@ -75,11 +74,11 @@ const AdminTable = () => {
             style={{ color: "#2A2A2A",lineHeight:"24px" }}
             className="text-[#2A2A2A] text-xl  font-semibold"
           >
-            <td className="px-4 py-6 ">{employee.id}</td>
-            <td className="px-4 py-6 ">{employee.name}</td>
-            <td className="px-4 py-6 ">{employee.policy}</td>
+            <td className="px-4 py-6 text-left">{employee.id}</td>
+            <td className="px-4 py-6 text-left">{employee.name}</td>
+            <td className="px-4 py-6 text-left">{employee.policy}</td>
 
-            <td className="px-4 py-6 font-bold ">
+            <td className="px-4 py-6 font-bold text-left">
               <button
                 className=""
                 style={{ color: "#1658FF", textDecorationLine: "underline" }}
