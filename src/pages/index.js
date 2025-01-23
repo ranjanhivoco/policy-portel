@@ -1,14 +1,23 @@
 import Header from "@/Components/Header";
 import Image from "next/image";
 import { useState } from "react";
+import handler from "./api/hello";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  console.log(
-    email==="pritesh@hivoco.com" && password==="12345"
-  );
+  const route =useRouter()
+  
+  const handleClick=()=>{
+    if( password==="12345"){
+      route.push('company-policy')
+    }
+    else {
+      console.log('enter password');
+    }
+  }
 
   return (
     <div className="px-14 py-9 min-h-screen w-full flex justify-center items-center">
@@ -58,6 +67,7 @@ const Home = () => {
           />
 
           <button
+          onClick={handleClick}
             type="button"
             className="
           uppercase
