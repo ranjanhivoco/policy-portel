@@ -52,33 +52,71 @@ const employees = [
 const AdminTable = () => {
   return (
     <table className="w-full table-auto ">
-      <thead >
+      <thead>
         <tr
-        style={{lineHeight:"24px",backgroundColor:"#2A2A2A"}}
+          style={{ lineHeight: "24px", backgroundColor: "#2A2A2A" }}
           className="
             text-white
             text-xl
             font-semibold 
            "
         >
-          <th className="py-6 px-4 text-left">SR NO.</th>
-          <th className="py-6 px-4 text-left">EMPLOYEE NAME</th>
-          <th className="py-6 px-4 text-left">POLICY STATUS</th>
-          <th className="py-6 px-4 text-left">ACTIONS</th>
+          <th
+            style={{ paddingTop: "24px", paddingBottom: "24px" }}
+            className="py-6 px-4 text-left"
+          >
+            SR NO.
+          </th>
+          <th
+            style={{ paddingTop: "24px", paddingBottom: "24px" }}
+            className="py-6 px-4 text-left"
+          >
+            EMPLOYEE NAME
+          </th>
+          <th
+            style={{ paddingTop: "24px", paddingBottom: "24px" }}
+            className="py-6 px-4 text-left"
+          >
+            POLICY STATUS
+          </th>
+          <th
+            style={{ paddingTop: "24px", paddingBottom: "24px" }}
+            className="py-6 px-4 text-left"
+          >
+            ACTIONS
+          </th>
         </tr>
       </thead>
       <tbody>
         {employees.map((employee) => (
           <tr
             key={employee.id}
-            style={{ color: "#2A2A2A",lineHeight:"24px" }}
+            style={{ color: "#2A2A2A", lineHeight: "24px" }}
             className="text-[#2A2A2A] text-xl  font-semibold"
           >
-            <td className="px-4 py-6 text-left">{employee.id}</td>
-            <td className="px-4 py-6 text-left">{employee.name}</td>
-            <td className="px-4 py-6 text-left">{employee.policy}</td>
+            <td
+              style={{ paddingTop: "24px", paddingBottom: "24px" }}
+              className="px-4 py-6 text-left"
+            >
+              {employee.id}
+            </td>
+            <td
+              style={{ paddingTop: "24px", paddingBottom: "24px" }}
+              className="px-4 py-6 text-left"
+            >
+              {employee.name}
+            </td>
+            <td
+              style={{ paddingTop: "24px", paddingBottom: "24px" }}
+              className="px-4 py-6 text-left"
+            >
+              {employee.policy}
+            </td>
 
-            <td className="px-4 py-6 font-bold text-left">
+            <td
+              style={{ paddingTop: "24px", paddingBottom: "24px" }}
+              className="px-4 py-6 font-bold text-left"
+            >
               <button
                 className=""
                 style={{ color: "#1658FF", textDecorationLine: "underline" }}
