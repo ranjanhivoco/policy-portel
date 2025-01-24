@@ -1,9 +1,9 @@
-import Header from '@/Components/Header'
+import Header from '@/components/Header'
 import DIV from '@/Elements/DIV';
 import H2 from '@/Elements/H2';
 import LI from '@/Elements/LI';
 import SPAN from '@/Elements/SPAN';
-import  { useState } from 'react'
+import React, { useState } from 'react'
 
 const SecurityPolicy = () => {
     const [isChecked, setIsChecked] = useState(false);
@@ -252,9 +252,9 @@ const SecurityPolicy = () => {
 
         <DIV>
           <div className="flex flex-col ">
-            <SPAN className={"!font-medium"}>Approval:</SPAN>
-            <SPAN className={"!font-medium"}>Approved by: Krishna Murari Yadav</SPAN>
-            <SPAN className={"!font-medium"}>Title: Chief Security Officer </SPAN>
+            <SPAN className={"!font-semibold"}>Approval:</SPAN>
+            <SPAN className={"!font-semibold"}>Approved by: Krishna Murari Yadav</SPAN>
+            <SPAN className={"!font-semibold"}>Title: Chief Security Officer </SPAN>
           </div>
 
           <div className="flex flex-col items-start gap-12">
