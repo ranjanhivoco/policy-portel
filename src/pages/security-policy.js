@@ -28,7 +28,7 @@ const SecurityPolicy = () => {
             information security within Hivoco to ensure the confidentiality,
             integrity, and availability of our data and systems. This policy
             applies to all employees, contractors, and third parties who have
-            access to Hivoco's information assets across all clients.
+            access to Hivoco&apos;s information assets across all clients.
           </SPAN>
         </DIV>
 
