@@ -1,7 +1,7 @@
-import React from 'react'
-import Header from '@/Components/Header'
-import { Search } from 'lucide-react'
-import CompanyPolicyTable from '@/Components/CompanyPolicyTable';
+import React from "react";
+import { Search } from "lucide-react";
+import Header from "@/Components/Header";
+import CompanyPolicyTable from "@/Components/CompanyPolicyTable";
 
 const SingleEmployee = () => {
   return (
@@ -53,8 +53,6 @@ const SingleEmployee = () => {
       </div>
     </div>
   );
-}
+};
 
-export default SingleEmployee
-
-
+export default SingleEmployee;

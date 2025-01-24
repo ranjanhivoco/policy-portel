@@ -1,8 +1,8 @@
-import Header from '@/Components/Header'
-import DIV from '@/elements/DIV';
-import H2 from '@/elements/H2';
-import LI from '@/elements/LI';
-import SPAN from '@/elements/SPAN';
+import Header from '@/Components/Header';
+import DIV from '@/Elements/DIV';
+import H2 from '@/Elements/H2';
+import LI from '@/Elements/LI';
+import SPAN from '@/Elements/SPAN';
 import React, { useState } from 'react'
 
 const SecurityPolicy = () => {
