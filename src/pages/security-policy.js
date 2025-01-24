@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+import Header from '@/Components/Header'
 import DIV from '@/elements/DIV';
 import H2 from '@/elements/H2';
 import LI from '@/elements/LI';

@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '@/components/Header'
+import Header from '@/Components/Header'
 import { Search } from 'lucide-react'
-import CompanyPolicyTable from '@/components/CompanyPolicyTable';
+import CompanyPolicyTable from '@/Components/CompanyPolicyTable';
 
 const SingleEmployee = () => {
   return (

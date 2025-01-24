@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/Components/Header";
 import Image from "next/image";
 import { useState } from "react";
 import handler from "./api/hello";
