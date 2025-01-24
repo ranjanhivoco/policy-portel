@@ -19,6 +19,8 @@ const Home = () => {
     }
   }
 
+  // {{live}}/auth/login-employee
+
   return (
     <div className="px-14 py-9 min-h-screen w-full flex justify-center items-center">
       <Image
