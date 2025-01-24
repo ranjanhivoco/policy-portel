@@ -18,7 +18,18 @@ const Header = () => {
       />
 
       <div className="flex items-center gap-2">
-        <CircleUser size={36} />
+        {/* <CircleUser size={36} /> */}
+
+        <Image
+        className=""
+        src={"/images/user.svg"}
+        width={36}
+        height={37}
+        alt="logo"
+        priority
+      />
+
+
 
         <div className="flex">
           <div>
