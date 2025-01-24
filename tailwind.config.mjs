@@ -3,7 +3,7 @@ const tailwindConfig = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/Components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/elements/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/Elements/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
