@@ -1,5 +1,5 @@
 import CompanyPolicyTable from '@/components/CompanyPolicyTable';
-import Header from '@/components/Header'
+import Header from '@/components/Header';
 import { Search } from 'lucide-react'
 import React from 'react'
 

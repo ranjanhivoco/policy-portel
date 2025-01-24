@@ -1,5 +1,5 @@
 import AdminTable from '@/components/AdminTable';
-import Header from '@/components/Header'
+import Header from '@/components/Header';
 import { Search } from 'lucide-react'
 import React from 'react'
 

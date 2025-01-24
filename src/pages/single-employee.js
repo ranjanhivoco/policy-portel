@@ -1,7 +1,7 @@
 import React from 'react'
-import CompanyPolicyTable from '@/components/CompanyPolicyTable';
 import Header from '@/components/Header'
 import { Search } from 'lucide-react'
+import CompanyPolicyTable from '@/components/CompanyPolicyTable';
 
 const SingleEmployee = () => {
   return (
