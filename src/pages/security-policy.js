@@ -3,7 +3,7 @@ import DIV from '@/Elements/DIV';
 import H2 from '@/Elements/H2';
 import LI from '@/Elements/LI';
 import SPAN from '@/Elements/SPAN';
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 const SecurityPolicy = () => {
     const [isChecked, setIsChecked] = useState(false);
