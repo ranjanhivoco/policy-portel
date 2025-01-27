@@ -1,12 +1,20 @@
 import CompanyPolicyTable from '@/Components/CompanyPolicyTable';
-import Header from '@/Components/Header';
+import { UserDataContext } from '@/Context/UserDataContext';
 import { Search } from 'lucide-react'
-import React from 'react'
+import dynamic from 'next/dynamic';
+const Header = dynamic(() => import('../Components/Header'), { ssr: false });
+
+import React, { useContext } from 'react'
 
 const CompanyPolicy = () => {
+
+    const {data}=useContext(UserDataContext)
+    console.log(data);
+    
+  
   return (
-    <div>
-      <Header />
+    <div className='pb-4'>
+      <Header  />
 
       <section className="flex flex-col gap-y-7 pb-7 px-14">
         <div className="flex justify-between items-center   pt-14 pb-10">
@@ -33,7 +41,6 @@ const CompanyPolicy = () => {
           [&:-webkit-autofill:active]:bg-transparent
           [&:-webkit-autofill]:[transition-delay:9999s]
           [&:-webkit-autofill]:[-webkit-text-fill-color:inherit]
-
           "
               type="text"
               id="name"
@@ -52,7 +59,6 @@ const CompanyPolicy = () => {
       <div className="mx-14 rounded-t-xl overflow-hidden">
         <CompanyPolicyTable />
       </div>
-
     </div>
   );
 }

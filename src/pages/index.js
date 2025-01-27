@@ -1,24 +1,81 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import handler from "./api/hello";
 import { useRouter } from "next/router";
+import { userAgent } from "next/server";
+import { UserDataContext } from "@/Context/UserDataContext";
+import { stringify } from "postcss";
 
 const Home = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const route =useRouter()
-  
-  const handleClick=()=>{
-    if( password==="12345"){
-      route.push('company-policy')
-    }
-    else {
-      console.log('enter password');
-    }
-  }
+  const [role,SetRole]=useState('')
 
-  // {{live}}/auth/login-employee
+  const [name,SetName]=useState('')
+
+  const {data, setData}=useContext(UserDataContext)
+
+
+  const route = useRouter()
+
+  const handleLogin =async()=>{
+    // const url= "https://api.hivoco.com/auth/login"
+    const url= "https://api.hivoco.com/auth/login-employee"
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+
+      if (!response.ok) {
+        // 200-300 range
+        throw new Error(`Error : ${response.status}`); // 400-500 erros range
+      }
+
+      const result = await response.json();
+      console.log(result);
+      
+
+      localStorage.setItem("accessToken", result.accessToken);
+      localStorage.setItem("refreshToken", result.refreshToken);
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          name: result?.user?.name,
+          role: result?.user?.role,
+          email: email,
+          employeeId: result.user._id,
+          password: result.user.password,
+        })
+      );
+
+      setData({
+        name: result?.user?.name,
+        role: result?.user?.role,
+        email: email,
+        employeeId:result.user._id,
+        password:result.user.password
+      });
+
+
+
+      // SetRole(result?.user?.role);
+      // SetName(result?.user?.name)
+
+      route.push("company-policy")
+    } catch (error) {
+      console.log("Error :", error);
+    }
+  } 
+
 
   return (
     <div className="px-14 py-9 min-h-screen w-full flex justify-center items-center">
@@ -68,7 +125,7 @@ const Home = () => {
           />
 
           <button
-          onClick={handleClick}
+          onClick={handleLogin}
             type="button"
             className="
           uppercase

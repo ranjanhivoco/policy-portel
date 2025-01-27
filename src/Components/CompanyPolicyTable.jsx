@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 const policies = [
   {
@@ -39,6 +40,66 @@ const policies = [
   {
     id: 7,
     policyName: "Hivoco Change Management Policy",
+    actions: "View Policy",
+    status: "Completed",
+  },
+
+  {
+    id: 8,
+    policyName: "Hivoco Change Management Policy",
+    actions: "View Policy",
+    status: "Completed",
+  },
+
+  {
+    id: 9,
+    policyName: "  Hivoco Quarterly Security Review Policy",
+    actions: "View Policy",
+    status: "Completed",
+  },
+
+  {
+    id: 10,
+    policyName: "Hivoco Quarterly Security Compliance Review Policy",
+    actions: "View Policy",
+    status: "Completed",
+  },
+
+  {
+    id: 11,
+    policyName: "Hivoco Data Backup and Management Policy",
+    actions: "View Policy",
+    status: "Completed",
+  },
+
+  {
+    id: 12,
+    policyName:
+      "Hivoco System Acquisition, Development, and Maintenance Policy",
+    actions: "View Policy",
+    status: "Completed",
+  },
+  {
+    id: 13,
+    policyName: "Hivoco Data Encryption Policy",
+    actions: "View Policy",
+    status: "Completed",
+  },
+  {
+    id: 14,
+    policyName: "Hivoco Data Anonymization Policy",
+    actions: "View Policy",
+    status: "Completed",
+  },
+  {
+    id: 15,
+    policyName: "Hivoco Infrastructure Redundancy Policy",
+    actions: "View Policy",
+    status: "Completed",
+  },
+  {
+    id: 16,
+    policyName: "Hivoco Data Segmentation and Encryption Policy",
     actions: "View Policy",
     status: "Completed",
   },
@@ -122,12 +183,14 @@ const CompanyPolicyTable = () => {
               }}
               className="px-4 py-6 font-bold text-left"
             >
-              <button
-                className=""
-                style={{ color: "#1658FF", textDecorationLine: "underline" }}
-              >
-                {policy.actions}
-              </button>
+              <Link href={ policy.id===1 ? "/security-policy" :"#"}>
+                <button
+                  className=""
+                  style={{ color: "#1658FF", textDecorationLine: "underline" }}
+                >
+                  {policy.actions}
+                </button>
+              </Link>
             </td>
 
             <td
@@ -139,7 +202,6 @@ const CompanyPolicyTable = () => {
                     ? "#00D100"
                     : "#FF2424",
               }}
-              
               className={`px-4 py-6 text-left`}
             >
               {policy.status}

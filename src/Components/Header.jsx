@@ -1,7 +1,18 @@
+import { UserDataContext } from "@/Context/UserDataContext";
 import { ChevronDown, CircleUser } from "lucide-react";
 import Image from "next/image";
+import { useContext } from "react";
 
 const Header = () => {
+  const { data } = useContext(UserDataContext);
+
+const userData = JSON.parse( localStorage.getItem("userData"));
+
+
+console.log(userData);
+
+
+
   return (
     <div
       className="py-9 px-14 flex justify-between items-center 
@@ -21,15 +32,13 @@ const Header = () => {
         {/* <CircleUser size={36} /> */}
 
         <Image
-        className=""
-        src={"/images/user.svg"}
-        width={36}
-        height={37}
-        alt="logo"
-        priority
-      />
-
-
+          className=""
+          src={"/images/user.svg"}
+          width={36}
+          height={37}
+          alt="logo"
+          priority
+        />
 
         <div className="flex">
           <div>
@@ -40,18 +49,18 @@ const Header = () => {
             text-black
             "
             >
-              Ananya Garg
+              {data.name}
             </h3>
 
             <span
-            style={{color:"#656565"}}
-            className="
+              style={{ color: "#656565" }}
+              className="
           text-[#656565]
             text-sm
             font-normal
             "
             >
-              ananya.garg@hivoco.com
+              {data.email}
             </span>
           </div>
           <ChevronDown size={16} />

@@ -1,12 +1,48 @@
-import Header from '@/Components/Header';
-import DIV from '@/Elements/DIV';
-import H2 from '@/Elements/H2';
-import LI from '@/Elements/LI';
-import SPAN from '@/Elements/SPAN';
-import React, { useState } from 'react'
+import { UserDataContext } from "@/Context/UserDataContext";
+import DIV from "@/Elements/DIV";
+import H2 from "@/Elements/H2";
+import LI from "@/Elements/LI";
+import SPAN from "@/Elements/SPAN";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+const Header = dynamic(() => import('../Components/Header'), { ssr: false });
 
-const SecurityPolicy = () => {
-    const [isChecked, setIsChecked] = useState(false);
+import React, { useContext, useState } from "react";
+
+const SecurityPolicy = ({policyName="Hivoco Information Security Policy"}) => {
+  const [isChecked, setIsChecked] = useState(false);
+  const { data } = useContext(UserDataContext);
+  const route=useRouter()
+
+
+  const updatePolicy = async () => {
+    console.log(data.employeeId);
+    
+    const url = `https://api.hivoco.com/policy/update-policy/${data.employeeId}`;
+    try {
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          policyName: "hii",
+          checked: true,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      alert("Policy accepted successfully")
+      route.push("/company-policy");
+      console.log(result);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
   return (
     <div>
@@ -253,8 +289,12 @@ const SecurityPolicy = () => {
         <DIV>
           <div className="flex flex-col ">
             <SPAN className={"!font-semibold"}>Approval:</SPAN>
-            <SPAN className={"!font-semibold"}>Approved by: Krishna Murari Yadav</SPAN>
-            <SPAN className={"!font-semibold"}>Title: Chief Security Officer </SPAN>
+            <SPAN className={"!font-semibold"}>
+              Approved by: Krishna Murari Yadav
+            </SPAN>
+            <SPAN className={"!font-semibold"}>
+              Title: Chief Security Officer{" "}
+            </SPAN>
           </div>
 
           <div className="flex flex-col items-start gap-12">
@@ -275,18 +315,22 @@ const SecurityPolicy = () => {
             </div>
 
             <button
-              className=" py-3 px-9 rounded-lg text-white"
+              onClick={updatePolicy}
+              disabled={!isChecked}
+              className={`py-3 px-9 rounded-lg text-white ${
+                !isChecked ? "opacity-60 hover:cursor-not-allowed" : ""
+              }`}
               style={{
                 background: "linear-gradient(90deg, #A679FF 0%, #FF6A92 100%)",
               }}
             >
-              <SPAN className={"!font-semibold"} >SUBMIT</SPAN>
+              <SPAN className={"!font-semibold"}>SUBMIT</SPAN>
             </button>
           </div>
         </DIV>
       </div>
     </div>
   );
-}
+};
 
-export default SecurityPolicy
+export default SecurityPolicy;
