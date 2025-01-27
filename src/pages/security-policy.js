@@ -9,16 +9,18 @@ const Header = dynamic(() => import('../Components/Header'), { ssr: false });
 
 import React, { useContext, useState } from "react";
 
-const SecurityPolicy = ({policyName=" Information Security Policy"}) => {
+const SecurityPolicy = ({policyName="  Security Policy"}) => {
   const [isChecked, setIsChecked] = useState(false);
   const { data } = useContext(UserDataContext);
   const route=useRouter()
 
 
   const updatePolicy = async () => {
-    console.log(data.employeeId);
+    const {employeeId}= JSON.parse(localStorage.getItem("userData"))
+    console.log(employeeId);
     
-    const url = `https://api.hivoco.com/policy/update-policy/${data.employeeId}`;
+
+    const url = `https://api.hivoco.com/policy/update-policy/${employeeId}`;
     try {
       const response = await fetch(url, {
         method: "PUT",
