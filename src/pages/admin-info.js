@@ -1,5 +1,5 @@
 import AdminTable from '@/Components/AdminTable';
-import Header from '@/Components/Header';
+const Header = dynamic(() => import('../Components/Header'), { ssr: false });
 import { Search } from 'lucide-react'
 import React from 'react'
 
