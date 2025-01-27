@@ -1,7 +1,9 @@
 import React from "react";
 import { Search } from "lucide-react";
-import Header from "@/Components/Header";
 import CompanyPolicyTable from "@/Components/CompanyPolicyTable";
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import('../Components/Header'), { ssr: false });
+
 
 const SingleEmployee = () => {
   return (
