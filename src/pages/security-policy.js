@@ -9,7 +9,7 @@ const Header = dynamic(() => import('../Components/Header'), { ssr: false });
 
 import React, { useContext, useState } from "react";
 
-const SecurityPolicy = ({policyName="Hivoco Information Security Policy"}) => {
+const SecurityPolicy = ({policyName=" Information Security Policy"}) => {
   const [isChecked, setIsChecked] = useState(false);
   const { data } = useContext(UserDataContext);
   const route=useRouter()
@@ -26,7 +26,7 @@ const SecurityPolicy = ({policyName="Hivoco Information Security Policy"}) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          policyName: "hii",
+          policyName: policyName,
           checked: true,
         }),
       });
