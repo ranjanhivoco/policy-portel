@@ -1,6 +1,9 @@
+'use client';
+
 import AdminTable from '@/Components/AdminTable';
 const Header = dynamic(() => import('../Components/Header'), { ssr: false });
 import { Search } from 'lucide-react'
+import dynamic from 'next/dynamic';
 import React from 'react'
 
 const AdminInfo = () => {
