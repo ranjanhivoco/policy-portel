@@ -10,13 +10,6 @@ const Home = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [role,SetRole]=useState('')
-
-  const [name,SetName]=useState('')
-
-  const {data, setData}=useContext(UserDataContext)
-
-
   const route = useRouter()
 
   const handleLogin =async()=>{
@@ -42,7 +35,6 @@ const Home = () => {
 
       const result = await response.json();
       console.log(result);
-      
 
       localStorage.setItem("accessToken", result.accessToken);
       localStorage.setItem("refreshToken", result.refreshToken);
@@ -57,20 +49,12 @@ const Home = () => {
         })
       );
 
-      setData({
-        name: result?.user?.name,
-        role: result?.user?.role,
-        email: email,
-        employeeId:result.user._id,
-        password:result.user.password
-      });
+      route.push(
+        result?.user?.role?.toLowerCase() === "admin"
+          ? "/admin-info"
+          : "/company-policy"
+      );
 
-
-
-      // SetRole(result?.user?.role);
-      // SetName(result?.user?.name)
-
-      route.push("company-policy")
     } catch (error) {
       console.log("Error :", error);
     }

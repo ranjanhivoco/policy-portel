@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const employees = [
   {
     id: 1,
@@ -49,7 +51,10 @@ const employees = [
   },
 ];
 
-const AdminTable = () => {
+const AdminTable = ({employeesData}) => {
+
+  console.log(employeesData);
+  
   return (
     <table className="w-full table-auto ">
       <thead>
@@ -79,6 +84,14 @@ const AdminTable = () => {
           >
             EMPLOYEE NAME
           </th>
+
+          <th
+            style={{ padding: "20px 16px", textAlign: "left" }}
+            className="py-6 px-4 text-left"
+          >
+            EMAIL ID
+          </th>
+
           <th
             style={{ padding: "20px 16px", textAlign: "left" }}
             className="py-6 px-4 text-left"
@@ -94,12 +107,12 @@ const AdminTable = () => {
         </tr>
       </thead>
       <tbody>
-        {employees.map((employee) => (
+        {employeesData?.map((employee, index) => (
           <tr
-            key={employee.id}
+            key={employee._id}
             style={{
               color: "#2A2A2A",
-            //   lineHeight: "24px",
+              //   lineHeight: "24px",
               fontSize: "16px",
               fontWeight: "600",
             }}
@@ -109,19 +122,27 @@ const AdminTable = () => {
               style={{ padding: "20px 16px", textAlign: "left" }}
               className="px-4 py-6 text-left"
             >
-              {employee.id}
+              {index + 1}
             </td>
             <td
               style={{ padding: "20px 16px", textAlign: "left" }}
               className="px-4 py-6 text-left"
             >
-              {employee.name}
+              {employee?.name}
             </td>
+
             <td
               style={{ padding: "20px 16px", textAlign: "left" }}
               className="px-4 py-6 text-left"
             >
-              {employee.policy}
+              {employee?.email}
+            </td>
+
+            <td
+              style={{ padding: "20px 16px", textAlign: "left" }}
+              className="px-4 py-6 text-left"
+            >
+              {employee?.policy || "14/16 Policies Completed"}
             </td>
 
             <td
@@ -132,12 +153,20 @@ const AdminTable = () => {
               }}
               className="px-4 py-6 font-bold text-left"
             >
-              <button
+              <Link
                 className=""
                 style={{ color: "#1658FF", textDecorationLine: "underline" }}
+                href={{
+                  pathname: "/employee-profile",
+                  query: {
+                    name: employee?.name,
+                    email: employee?.email,
+                    employeeId: employee?._id,
+                  },
+                }}
               >
-                {employee.actions}
-              </button>
+                View Details
+              </Link>
             </td>
           </tr>
         ))}

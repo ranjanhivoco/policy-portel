@@ -4,13 +4,14 @@ import { Search } from 'lucide-react'
 import dynamic from 'next/dynamic';
 const Header = dynamic(() => import('../Components/Header'), { ssr: false });
 
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 const CompanyPolicy = () => {
 
     const {data}=useContext(UserDataContext)
     console.log(data);
     
+
   
   return (
     <div className='pb-4'>

@@ -1,18 +1,52 @@
-'use client';
+"use client";
 
-import AdminTable from '@/Components/AdminTable';
-const Header = dynamic(() => import('../Components/Header'), { ssr: false });
-import { Search } from 'lucide-react'
-import dynamic from 'next/dynamic';
-import React from 'react'
+import AdminTable from "@/Components/AdminTable";
+const Header = dynamic(() => import("../Components/Header"), { ssr: false });
+import { Search } from "lucide-react";
+import dynamic from "next/dynamic";
+import React, { useEffect, useState } from "react";
 
 const AdminInfo = () => {
+  const [employeesData,setEmployeesData]=useState()
+  console.log(employeesData);
+  
+  const getEmployeeList = async () => {
+    const url = "https://api.hivoco.com/policy/get-list-of-employee";
+    const accessToken = localStorage.getItem("accessToken") ;    
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const result = await response.json();
+      setEmployeesData(result);
+
+    } catch (error) {
+      console.log("catch error", error);
+    }
+  };
+
+  useEffect(()=>{
+    getEmployeeList();
+  },[])
+
   return (
     <div>
       <Header />
 
       <div className="flex justify-between items-center  px-14 pt-14 pb-10">
-        <h2 className="text-2xl text-[1.75rem]  font-semibold text-black">Admin Dashboard</h2>
+        <h2 className="text-2xl text-[1.75rem]  font-semibold text-black">
+          Admin Dashboard
+        </h2>
 
         <div className="flex items-center gap-2 bg-[#F6F6F6] rounded-lg p-3 ">
           <Search size={28} />
@@ -44,10 +78,10 @@ const AdminInfo = () => {
       </div>
 
       <div className="mx-14 rounded-t-xl overflow-hidden">
-        <AdminTable />
+        <AdminTable employeesData={employeesData} />
       </div>
     </div>
   );
-}
+};
 
-export default AdminInfo
+export default AdminInfo;

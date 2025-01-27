@@ -4,14 +4,7 @@ import Image from "next/image";
 import { useContext } from "react";
 
 const Header = () => {
-  const { data } = useContext(UserDataContext);
-
-const userData = JSON.parse( localStorage.getItem("userData"));
-
-
-console.log(userData);
-
-
+const userData = JSON.parse( localStorage.getItem("userData")) || {};
 
   return (
     <div
@@ -49,7 +42,7 @@ console.log(userData);
             text-black
             "
             >
-              {data.name}
+              {userData.name}
             </h3>
 
             <span
@@ -60,7 +53,7 @@ console.log(userData);
             font-normal
             "
             >
-              {data.email}
+              {userData.email}
             </span>
           </div>
           <ChevronDown size={16} />

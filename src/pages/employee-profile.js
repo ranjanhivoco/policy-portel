@@ -1,11 +1,51 @@
-import React from "react";
+'use client'
+
+import React, { useEffect } from "react";
 import { Search } from "lucide-react";
 import CompanyPolicyTable from "@/Components/CompanyPolicyTable";
 import dynamic from "next/dynamic";
+import { useSearchParams } from "next/navigation";
 const Header = dynamic(() => import('../Components/Header'), { ssr: false });
 
 
-const SingleEmployee = () => {
+
+
+const EmployeeProfile= () => {
+  const searchParams = useSearchParams()
+  const employeeId = searchParams.get("employeeId");
+  
+  
+  const getEmployeeData=async()=>{
+    const accessToken = localStorage.getItem("accessToken")
+    const url=`https://api.hivoco.com/policy/get-info-of-employee/${employeeId}`
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+
+      const result = await response.json();
+      console.log(result,'result');
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  useEffect(()=>{  
+    getEmployeeData()
+  },[])
+
   return (
     <div>
       <Header />
@@ -14,10 +54,10 @@ const SingleEmployee = () => {
         <div className="flex justify-between items-start   pt-14 pb-10">
           <div className="flex flex-col gap-y-3">
             <h2 className="text-2xl text-[1.75rem]  font-semibold text-black">
-              Employee Name: Ananya Garg
+              Employee Name: {searchParams.get('name')}
             </h2>
 
-            <span>Email Id: ananya.garg@hivoco.com</span>
+            <span>Email Id: {searchParams.get('email')}</span>
           </div>
 
           <div className="flex items-center gap-2 bg-[#F6F6F6] rounded-lg p-3 ">
@@ -57,4 +97,4 @@ const SingleEmployee = () => {
   );
 };
 
-export default SingleEmployee;
+export default EmployeeProfile;
