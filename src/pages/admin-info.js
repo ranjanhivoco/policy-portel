@@ -12,7 +12,7 @@ const AdminInfo = () => {
   
   const getEmployeeList = async () => {
     const url = "https://api.hivoco.com/policy/get-list-of-employee";
-    const accessToken = localStorage.getItem("accessToken") ;    
+    const accessToken = sessionStorage.getItem("accessToken") ;    
 
     try {
       const response = await fetch(url, {

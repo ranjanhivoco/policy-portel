@@ -1,100 +1,82 @@
 import Link from "next/link";
 import React from "react";
+
 const policies = [
   {
     id: 1,
     policyName: "Hivoco Information Security Policy",
-    actions: "View Policy",
-    href:"policies/security-policy"
   },
   {
     id: 2,
     policyName: "Hivoco's New Information Security Policy",
-    actions: "View Policy",
   },
   {
     id: 3,
     policyName: "Hivoco IT Asset Register Policy",
-    actions: "View Policy",
-    href:"policies/it-asset-register"
   },
   {
     id: 4,
     policyName: "Hivoco Physical Security Controls",
-    actions: "View Policy",
   },
   {
     id: 5,
     policyName: "Hivoco Power Backup Policy",
-    actions: "View Policy",
   },
   {
     id: 6,
     policyName: "Hivoco Logical Access Management Policy",
-    actions: "View Policy",
   },
   {
     id: 7,
     policyName: "Hivoco Change Management Policy",
-    actions: "View Policy",
   },
 
   {
     id: 8,
     policyName: "Hivoco Change Management Policy",
-    actions: "View Policy",
   },
 
   {
     id: 9,
     policyName: "  Hivoco Quarterly Security Review Policy",
-    actions: "View Policy",
   },
 
   {
     id: 10,
     policyName: "Hivoco Quarterly Security Compliance Review Policy",
-    actions: "View Policy",
   },
 
   {
     id: 11,
     policyName: "Hivoco Data Backup and Management Policy",
-    actions: "View Policy",
   },
 
   {
     id: 12,
     policyName:
       "Hivoco System Acquisition, Development, and Maintenance Policy",
-    actions: "View Policy",
   },
   {
     id: 13,
     policyName: "Hivoco Data Encryption Policy",
-    actions: "View Policy",
   },
   {
     id: 14,
     policyName: "Hivoco Data Anonymization Policy",
-    actions: "View Policy",
   },
   {
     id: 15,
     policyName: "Hivoco Infrastructure Redundancy Policy",
-    actions: "View Policy",
   },
   {
     id: 16,
     policyName: "Hivoco Data Segmentation and Encryption Policy",
-    actions: "View Policy",
   },
 ];
 
-const CompanyPolicyTable = ({selectedPolicies}) => {
-
-  console.log(selectedPolicies,'selectedPolicies');
-
+const EmployeePoliciesTable = ({selectedPolicies}) => {
+  // console.log(policies);
+  // console.log(selectedPolicies);
 
   const newPolicies = policies.map((policy) => {
     // console.log(policy);
@@ -109,13 +91,12 @@ const CompanyPolicyTable = ({selectedPolicies}) => {
       ...policy,
       status: exists,
     };
-  })
+  });
 
   console.log(newPolicies,'newPolicies');
-  
 
   return (
-    <table className="w-full table-auto">
+    <table className="w-full table-auto ">
       <thead>
         <tr
           style={{
@@ -142,12 +123,6 @@ const CompanyPolicyTable = ({selectedPolicies}) => {
             className="py-6 px-4 text-left"
           >
             POLICY NAME{" "}
-          </th>
-          <th
-            style={{ padding: "20px 16px", textAlign: "left" }}
-            className="py-6 px-4 text-left"
-          >
-            ACTIONS{" "}
           </th>
           <th
             style={{ padding: "20px 16px", textAlign: "left" }}
@@ -183,7 +158,7 @@ const CompanyPolicyTable = ({selectedPolicies}) => {
               {policy.policyName}
             </td>
 
-            <td
+            {/* <td
               style={{
                 padding: "20px 16px",
                 textAlign: "left",
@@ -191,7 +166,7 @@ const CompanyPolicyTable = ({selectedPolicies}) => {
               }}
               className="px-4 py-6 font-bold text-left"
             >
-              <Link href={policy.id === 1 ? "policies/security-policy" : "#"}>
+              <Link href={ policy.id===1 ? "/security-policy" :"#"}>
                 <button
                   className=""
                   style={{ color: "#1658FF", textDecorationLine: "underline" }}
@@ -199,20 +174,21 @@ const CompanyPolicyTable = ({selectedPolicies}) => {
                   {policy.actions}
                 </button>
               </Link>
-            </td>
+            </td> */}
 
             <td
               style={{
                 padding: "20px 16px",
                 textAlign: "left",
                 color:
-                  policy.status?
-                     "#00D100"
-                    : "#FF2424"
-              }}
+                  policy.status
+                    ? "#00D100"
+                    : "#FF2424",
+              }
+            }
               className={`px-4 py-6 text-left capitalize`}
             >
-              {policy.status ? "completed" : "not completed"}
+              {policy?.status ?"completed":"not completed"}
             </td>
           </tr>
         ))}
@@ -221,4 +197,4 @@ const CompanyPolicyTable = ({selectedPolicies}) => {
   );
 };
 
-export default CompanyPolicyTable;
+export default EmployeePoliciesTable;

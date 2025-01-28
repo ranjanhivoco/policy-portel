@@ -1,21 +1,60 @@
-import CompanyPolicyTable from '@/Components/CompanyPolicyTable';
-import { UserDataContext } from '@/Context/UserDataContext';
-import { Search } from 'lucide-react'
-import dynamic from 'next/dynamic';
-const Header = dynamic(() => import('../Components/Header'), { ssr: false });
+"use client"
+import CompanyPolicyTable from "@/Components/CompanyPolicyTable";
+import { UserDataContext } from "@/Context/UserDataContext";
+import { Search } from "lucide-react";
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("../Components/Header"), { ssr: false });
 
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from "react";
 
 const CompanyPolicy = () => {
-
-    const {data}=useContext(UserDataContext)
-    console.log(data);
-    
-
+  const { data } = useContext(UserDataContext);
+  const [selectedPolicies, setSelectedPolicies] = useState([]);
+  const [employeeId,setEmployeeId]=useState()
+  // console.log(employeeId);
+  // console.log(selectedPolicies,'selectedPolicies');
   
+  const getEmployeeData = async () => {
+    const accessToken = sessionStorage.getItem("accessToken");
+    // console.log(accessToken,'accessToken');
+    // console.log(employeeId,'employeeId');
+    const url = `https://api.hivoco.com/policy/get-info-of-employee/${employeeId}`;
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+
+      const result = await response.json();
+      setSelectedPolicies(result?.policies);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (employeeId) {
+      getEmployeeData();
+    }
+  }, [employeeId])
+
+  useEffect(()=>{
+    const { employeeId } = JSON.parse(sessionStorage.getItem("userData"));
+    // console.log(employeeId,'employeeId');
+    setEmployeeId(employeeId)
+  },[])
+
   return (
-    <div className='pb-4'>
-      <Header  />
+    <div className="pb-4">
+      <Header />
 
       <section className="flex flex-col gap-y-7 pb-7 px-14">
         <div className="flex justify-between items-center   pt-14 pb-10">
@@ -58,10 +97,10 @@ const CompanyPolicy = () => {
       </section>
 
       <div className="mx-14 rounded-t-xl overflow-hidden">
-        <CompanyPolicyTable />
+        <CompanyPolicyTable  selectedPolicies={selectedPolicies}/>
       </div>
     </div>
   );
-}
+};
 
-export default CompanyPolicy
+export default CompanyPolicy;

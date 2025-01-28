@@ -1,24 +1,22 @@
 'use client'
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import CompanyPolicyTable from "@/Components/CompanyPolicyTable";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
+import EmployeePoliciesTable from "@/Components/EmployeePoliciesTable";
 const Header = dynamic(() => import('../Components/Header'), { ssr: false });
-
-
 
 
 const EmployeeProfile= () => {
   const searchParams = useSearchParams()
   const employeeId = searchParams.get("employeeId");
-  
+  const [selectedPolicies,setSelectedPolicies]=useState([])
   
   const getEmployeeData=async()=>{
-    const accessToken = localStorage.getItem("accessToken")
+    const accessToken = sessionStorage.getItem("accessToken")    
     const url=`https://api.hivoco.com/policy/get-info-of-employee/${employeeId}`
-
     try {
       const response = await fetch(url, {
         method: "GET",
@@ -34,17 +32,18 @@ const EmployeeProfile= () => {
       }
 
       const result = await response.json();
-      console.log(result,'result');
+      setSelectedPolicies(result?.policies);      
       
     } catch (error) {
       console.log(error);
     }
   }
 
-
-  useEffect(()=>{  
-    getEmployeeData()
-  },[])
+  useEffect(()=>{
+    if (employeeId) {
+      getEmployeeData();
+    }
+  },[employeeId])
 
   return (
     <div>
@@ -91,7 +90,7 @@ const EmployeeProfile= () => {
       </section>
 
       <div className="mx-14 rounded-t-xl overflow-hidden">
-        <CompanyPolicyTable />
+        <EmployeePoliciesTable selectedPolicies={selectedPolicies} />
       </div>
     </div>
   );

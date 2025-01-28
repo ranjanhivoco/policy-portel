@@ -5,18 +5,17 @@ import LI from "@/Elements/LI";
 import SPAN from "@/Elements/SPAN";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-const Header = dynamic(() => import('../Components/Header'), { ssr: false });
+const Header = dynamic(() => import('../../Components/Header'), { ssr: false });
 
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
-const SecurityPolicy = ({policyName="  Security Policy"}) => {
+const SecurityPolicy = ({policyName="Hivoco Information Security Policy"}) => {
   const [isChecked, setIsChecked] = useState(false);
-  const { data } = useContext(UserDataContext);
   const route=useRouter()
 
 
   const updatePolicy = async () => {
-    const {employeeId}= JSON.parse(localStorage.getItem("userData"))
+    const {employeeId}= JSON.parse(sessionStorage.getItem("userData"))
     console.log(employeeId);
     
 

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useContext } from "react";
 
 const Header = () => {
-const userData = JSON.parse( localStorage.getItem("userData")) || {};
+const userData = JSON.parse( sessionStorage.getItem("userData")) || {};
 
   return (
     <div

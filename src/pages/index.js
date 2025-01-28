@@ -36,9 +36,10 @@ const Home = () => {
       const result = await response.json();
       console.log(result);
 
-      localStorage.setItem("accessToken", result.accessToken);
-      localStorage.setItem("refreshToken", result.refreshToken);
-      localStorage.setItem(
+      sessionStorage.setItem("accessToken", result.accessToken);
+      sessionStorage.setItem("refreshToken", result.refreshToken);
+
+      sessionStorage.setItem(
         "userData",
         JSON.stringify({
           name: result?.user?.name,
