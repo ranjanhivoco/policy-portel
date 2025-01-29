@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import CompanyPolicyTable from "@/Components/CompanyPolicyTable";
 import { UserDataContext } from "@/Context/UserDataContext";
 import { Search } from "lucide-react";
@@ -10,10 +10,10 @@ import React, { useContext, useEffect, useState } from "react";
 const CompanyPolicy = () => {
   const { data } = useContext(UserDataContext);
   const [selectedPolicies, setSelectedPolicies] = useState([]);
-  const [employeeId,setEmployeeId]=useState()
+  const [employeeId, setEmployeeId] = useState();
   // console.log(employeeId);
   // console.log(selectedPolicies,'selectedPolicies');
-  
+
   const getEmployeeData = async () => {
     const accessToken = sessionStorage.getItem("accessToken");
     // console.log(accessToken,'accessToken');
@@ -44,13 +44,13 @@ const CompanyPolicy = () => {
     if (employeeId) {
       getEmployeeData();
     }
-  }, [employeeId])
+  }, [employeeId]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const { employeeId } = JSON.parse(sessionStorage.getItem("userData"));
     // console.log(employeeId,'employeeId');
-    setEmployeeId(employeeId)
-  },[])
+    setEmployeeId(employeeId);
+  }, []);
 
   return (
     <div className="pb-4">
@@ -97,7 +97,7 @@ const CompanyPolicy = () => {
       </section>
 
       <div className="mx-14 rounded-t-xl overflow-hidden">
-        <CompanyPolicyTable  selectedPolicies={selectedPolicies}/>
+        <CompanyPolicyTable selectedPolicies={selectedPolicies} />
       </div>
     </div>
   );
