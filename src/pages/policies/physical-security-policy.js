@@ -4,7 +4,6 @@ import H2 from "@/Elements/H2";
 import LI from "@/Elements/LI";
 import SPAN from "@/Elements/SPAN";
 import { useRouter } from "next/router";
-import { Span } from "next/dist/trace";
 
 const PhysicalSecurityPolicy = ({policyName="Hivoco Physical Security Controls Policy"}) => {
   // 5
