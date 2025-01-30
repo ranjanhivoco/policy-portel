@@ -11,7 +11,7 @@ const policies = [
     id: 2,
     policyName: "Hivoco's New Information Security Policy",
     actions: "View Policy",
-    href: "policies/security-policy",
+    href: "policies/information-security-policy",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const policies = [
   },
   {
     id: 4,
-    policyName: "Hivoco Physical Security Controls",
+    policyName: "Hivoco Physical Security Controls Policy",
     actions: "View Policy",
     href: "policies/physical-security-policy",
   },
