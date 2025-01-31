@@ -57,7 +57,7 @@ const AdminTable = ({employeesData,searchTerm}) => {
     return employee?.name
       ?.toLowerCase()
       ?.trim()
-      ?.includes(searchTerm.toLowerCase());
+      ?.includes(searchTerm.toLowerCase().trim());
   });
 
   // console.log(employeesData);
