@@ -35,12 +35,12 @@ const Header = () => {
           priority
         />
 
-        <div className="relative">
+        <div className="relative flex ">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center gap-2 focus:outline-none"
+            className="flex items-center  gap-2 focus:outline-none"
           >
-            <div>
+            <div className="flex flex-col items-start">
               <h3 className="text-base font-medium text-black">
                 {userData.name}
               </h3>
@@ -61,7 +61,7 @@ const Header = () => {
 
           {/* logout ui */}
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+            <div className="absolute right-0 mt-12 w-48 bg-white rounded-md shadow-lg py-1 z-10">
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full"

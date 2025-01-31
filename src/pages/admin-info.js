@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 
 const AdminInfo = () => {
   const [employeesData,setEmployeesData]=useState()
+    const [searchTerm,setSearchTerm]=useState('')
+  
   console.log(employeesData);
   
   const getEmployeeList = async () => {
@@ -52,6 +54,10 @@ const AdminInfo = () => {
           <Search size={28} />
 
           <input
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+            value={searchTerm}
             className="
             bg-transparent
             outline-none
@@ -78,7 +84,7 @@ const AdminInfo = () => {
       </div>
 
       <div className="mx-14 rounded-t-xl overflow-hidden">
-        <AdminTable employeesData={employeesData} />
+        <AdminTable searchTerm={searchTerm} employeesData={employeesData} />
       </div>
     </div>
   );

@@ -73,7 +73,8 @@ const policies = [
   },
   {
     id: 12,
-    policyName:"Hivoco System Acquisition, Development, and Maintenance Policy",
+    policyName:
+      "Hivoco System Acquisition, Development, and Maintenance Policy",
     actions: "View Policy",
     href: "policies/system-acquisition-policy",
   },
@@ -104,17 +105,15 @@ const policies = [
   },
 ];
 
-const CompanyPolicyTable = ({selectedPolicies}) => {
-
-  console.log(selectedPolicies,'selectedPolicies');
-
+const CompanyPolicyTable = ({ selectedPolicies, searchTerm }) => {
+  // console.log(selectedPolicies,'selectedPolicies');
 
   const newPolicies = policies.map((policy) => {
     // console.log(policy);
 
     // Check if policy exists in the second array (using trimmed comparison)
     const exists = selectedPolicies?.some((selectedPolicy) => {
-      console.log(selectedPolicy,'selectedPolicy');
+      // console.log(selectedPolicy,'selectedPolicy');
       return selectedPolicy.policyName.trim() === policy.policyName.trim();
     });
 
@@ -122,10 +121,18 @@ const CompanyPolicyTable = ({selectedPolicies}) => {
       ...policy,
       status: exists,
     };
-  })
+  });
 
-  console.log(newPolicies,'newPolicies');
-  
+  const filteredPolices = newPolicies?.filter((policy) => {
+    return policy?.policyName
+      ?.toLowerCase()
+      .trim()
+      .includes(searchTerm?.toLowerCase()?.trim());
+  });
+
+  // console.log(filteredPolices,'filteredPolices');
+
+  // console.log(newPolicies,'newPolicies');
 
   return (
     <table className="w-full table-auto">
@@ -171,7 +178,7 @@ const CompanyPolicyTable = ({selectedPolicies}) => {
         </tr>
       </thead>
       <tbody>
-        {newPolicies?.map((policy) => (
+        {filteredPolices?.map((policy) => (
           <tr
             key={policy.id}
             style={{
@@ -218,10 +225,7 @@ const CompanyPolicyTable = ({selectedPolicies}) => {
               style={{
                 padding: "20px 16px",
                 textAlign: "left",
-                color:
-                  policy.status?
-                     "#00D100"
-                    : "#FF2424"
+                color: policy.status ? "#00D100" : "#FF2424",
               }}
               className={`px-4 py-6 text-left capitalize`}
             >

@@ -11,6 +11,7 @@ const CompanyPolicy = () => {
   const { data } = useContext(UserDataContext);
   const [selectedPolicies, setSelectedPolicies] = useState([]);
   const [employeeId, setEmployeeId] = useState();
+  const [searchTerm,setSearchTerm]=useState('')
   // console.log(employeeId);
   // console.log(selectedPolicies,'selectedPolicies');
 
@@ -66,6 +67,8 @@ const CompanyPolicy = () => {
             <Search size={28} />
 
             <input
+              onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchTerm}
               className="
             bg-transparent
             outline-none
@@ -74,8 +77,7 @@ const CompanyPolicy = () => {
           border-black
             w-80
           placeholder:text-[#656565]
-
-                    [&:-webkit-autofill]:bg-transparent
+          [&:-webkit-autofill]:bg-transparent
           [&:-webkit-autofill:hover]:bg-transparent
           [&:-webkit-autofill:focus]:bg-transparent
           [&:-webkit-autofill:active]:bg-transparent
@@ -97,7 +99,7 @@ const CompanyPolicy = () => {
       </section>
 
       <div className="mx-14 rounded-t-xl overflow-hidden">
-        <CompanyPolicyTable selectedPolicies={selectedPolicies} />
+        <CompanyPolicyTable selectedPolicies={selectedPolicies} searchTerm={searchTerm} />
       </div>
     </div>
   );

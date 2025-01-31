@@ -51,7 +51,14 @@ const employees = [
   },
 ];
 
-const AdminTable = ({employeesData}) => {
+const AdminTable = ({employeesData,searchTerm}) => {
+
+  const filteredData = employeesData.filter((employee) => {
+    return employee?.name
+      ?.toLowerCase()
+      .trim()
+      .includes(searchTerm.toLowerCase());
+  });
 
   console.log(employeesData);
   
@@ -107,7 +114,7 @@ const AdminTable = ({employeesData}) => {
         </tr>
       </thead>
       <tbody>
-        {employeesData?.map((employee, index) => (
+        {filteredData?.map((employee, index) => (
           <tr
             key={employee._id}
             style={{
