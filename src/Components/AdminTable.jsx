@@ -53,14 +53,14 @@ const employees = [
 
 const AdminTable = ({employeesData,searchTerm}) => {
 
-  const filteredData = employeesData.filter((employee) => {
+  const filteredData = employeesData?.filter((employee) => {
     return employee?.name
       ?.toLowerCase()
-      .trim()
-      .includes(searchTerm.toLowerCase());
+      ?.trim()
+      ?.includes(searchTerm.toLowerCase());
   });
 
-  console.log(employeesData);
+  // console.log(employeesData);
   
   return (
     <table className="w-full table-auto ">

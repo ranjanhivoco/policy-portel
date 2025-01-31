@@ -16,7 +16,7 @@ const policies = [
   },
   {
     id: 4,
-    policyName: "Hivoco Physical Security Controls",
+    policyName: "Hivoco Physical Security Controls Controls",
   },
   {
     id: 5,
